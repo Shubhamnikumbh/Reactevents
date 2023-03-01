@@ -23,6 +23,12 @@ const mapdata =() => {
     (mappedarray)
 }
   
+var counter = 0 ;
+  
+const counter = () => {
+  count = count + 1 ;
+  console.log(count)
+}
 
   return (
     <div>
