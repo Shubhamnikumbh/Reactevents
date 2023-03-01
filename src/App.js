@@ -1,23 +1,48 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React, { useEffect, useState } from 'react'
+import './Box.css'
+
+
 
 function App() {
+
+  const [data, setdata] = useState("Rahul ")
+  const [users, setusers] = useState([])
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(json =>setusers(json))
+  }, [])
+  
+const mapdata =() => {
+  let mappedarray = users.filter((user) => {
+    return user.id < 5 ;
+  })
+    console.log
+    (mappedarray)
+}
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+
+
+<div>
+ {
+  users.map((user) => {
+    return (
+      <div className='box'>
+    <p>{user.name}</p>
+    <p>{user.username}</p>
+      </div>
+    
+    )
+  })
+ }
+ <button onClick={mapdata}>see mapped array</button>
+</div>
     </div>
   );
 }
