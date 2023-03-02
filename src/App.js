@@ -9,6 +9,9 @@ function App() {
 
   const [data, setdata] = useState("Rahul ")
   const [users, setusers] = useState([])
+const [screenWidth, setscreenWidth] = useState(window.innerWidth)
+
+
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
@@ -23,20 +26,25 @@ const mapdata =() => {
     (mappedarray)
 }
   
-var counter = 0 ;
+useEffect(() => {
   
-const counter = () => {
-  count = count + 1 ;
-  console.log(count);
-}
+  window.addEventListener ('resize',() => {
+    setscreenWidth(window.innerWidth);
+  })
+
+}, [data])
 
   return (
     <div>
 
+<h1>{data}</h1>
+<button onClick={() => {
+  setdata("Shahrukh")
+}}>Click me</button>
 
 
 <div>
- {
+ {/* {
   users.map((user) => {
     return (
       <div className='box'>
@@ -46,8 +54,9 @@ const counter = () => {
     
     )
   })
- }
+ } */}
  <button onClick={mapdata}>see mapped array</button>
+<p>{screenWidth}</p>
 </div>
     </div>
   );
