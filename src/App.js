@@ -2,6 +2,7 @@
 import './App.css';
 import React, { useEffect, useState } from 'react'
 import './Box.css'
+import HookUsememo from './Component/HookUsememo';
 
 
 
@@ -31,8 +32,11 @@ useEffect(() => {
   window.addEventListener ('resize',() => {
     setscreenWidth(window.innerWidth);
   })
-
 }, [data])
+  
+
+
+
 
   return (
     <div>
@@ -58,6 +62,12 @@ useEffect(() => {
  <button onClick={mapdata}>see mapped array</button>
 <p>{screenWidth}</p>
 </div>
+
+<div>
+  
+</div>
+
+<HookUsememo/>
     </div>
   );
 }
